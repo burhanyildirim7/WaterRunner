@@ -18,12 +18,12 @@ public class SwerveMovement : MonoBehaviour
 
     private void Update()
     {
-		if (GameManager.instance.isContinue)
-		{
+        if (GameManager.instance._oyunAktif && GameManager.instance._finishCizgisiAktif == false)
+        {
             centerPosition = transform.position;
             float swerveAmount = Time.deltaTime * swerveSpeed * _swerveInputSystem.MoveFactorX;
             water.transform.Translate(swerveAmount, 0, 0);
-            transform.Translate(Vector3.forward * Time.deltaTime * playerZSpeed);
+
             float distance = Vector3.Distance(water.transform.position, centerPosition);
             if (distance > _radius)
             {
@@ -31,6 +31,22 @@ public class SwerveMovement : MonoBehaviour
                 fromOriginToObject *= _radius / distance;
                 water.transform.position = centerPosition + fromOriginToObject;
             }
-        }   
+        }
+        else
+        {
+
+        }
+
+
+        if (GameManager.instance._oyunAktif)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * playerZSpeed);
+        }
+        else
+        {
+
+        }
+
+
     }
 }

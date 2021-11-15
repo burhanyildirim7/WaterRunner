@@ -8,6 +8,25 @@ TagManager:
   - dirty
   - obstacle
   - collectible
+  - Water
+  - temizduvar
+  - kirliduvar
+  - LevelController
+  - finish
+  - X10
+  - Ramp
+  - X8
+  - X2
+  - X9
+  - X6
+  - X7
+  - X4
+  - X3
+  - X1
+  - BitirmeCizgisi
+  - X5
+  - FinishCizgisi
+  - WaterPaket
   layers:
   - Default
   - TransparentFX

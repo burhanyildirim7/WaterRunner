@@ -1,30 +1,138 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] private GameObject _tapToStartPanel;
+    [SerializeField] private GameObject _gameScreenPanel;
+    [SerializeField] private GameObject _winScreenPanel;
+    [SerializeField] private GameObject _loseScreenPanel;
+
+    [SerializeField] private Text _levelText;
+    [SerializeField] private Text _elmasText;
+    [SerializeField] private Text _winElmasText;
+    [SerializeField] private Text _loseElmasText;
+    [SerializeField] private Text _tapToStartElmasText;
+
+    private int _levelNumber;
+
+    private int _elmasSayisi;
+
+    private WaterController _playerController;
+
+    private LevelController _levelController;
+
+    private int _levelSonuElmasSayisi;
+
+    private int _oyunBasladi;
+
     public static UIController instance;
 
-	public GameObject TapToStartPanel,LoosePanel;
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
 
-	private void Awake()
-	{
-		if (instance == null) instance = this;
-		else Destroy(this);
-	}
+    void Start()
+    {
+        _tapToStartPanel.SetActive(true);
 
-	// Tap to start butonuna týklayýnca çalýþacak olan fonksiyon...
-	public void TapToStart()
-	{
-		TapToStartPanel.SetActive(false);
-		GameManager.instance.isContinue = true;
-	}
+        _levelNumber = PlayerPrefs.GetInt("LevelNumber");
 
-	// Tap to restart butonuna týkalyýnca çalýþacak olan fonksiyon..
-	public void TapToRestart()
-	{
-		LoosePanel.SetActive(false);
-		TapToStartPanel.SetActive(true);
-	}
+        _oyunBasladi = PlayerPrefs.GetInt("OyunBasladi");
+        if (_oyunBasladi == 0)
+        {
+            PlayerPrefs.SetInt("LevelNumber", 1);
+            _oyunBasladi = 1;
+            PlayerPrefs.SetInt("OyunBasladi", _oyunBasladi);
+        }
+        else
+        {
+
+        }
+
+        _elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
+
+        _playerController = GameObject.FindWithTag("Water").GetComponent<WaterController>();
+
+        _levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+
+        _tapToStartElmasText.text = _elmasSayisi.ToString();
+
+
+    }
+
+
+    void Update()
+    {
+        _levelNumber = PlayerPrefs.GetInt("LevelNumber");
+
+        _elmasSayisi = PlayerPrefs.GetInt("ElmasSayisi");
+
+
+        _levelText.text = "LEVEL " + (_levelNumber);
+
+
+        _elmasText.text = _elmasSayisi.ToString();
+    }
+
+    public void TaptoStartPanelClose()
+    {
+        GameManager.instance._oyunAktif = true;
+        _tapToStartPanel.SetActive(false);
+        _gameScreenPanel.SetActive(true);
+    }
+
+    public void WinScreenPanelOpen()
+    {
+        GameManager.instance._oyunAktif = false;
+        _gameScreenPanel.SetActive(false);
+        _winScreenPanel.SetActive(true);
+        _winElmasText.text = _levelSonuElmasSayisi.ToString();
+    }
+
+    public void LoseScreenPanelOpen()
+    {
+        GameManager.instance._oyunAktif = false;
+        _gameScreenPanel.SetActive(false);
+        _loseScreenPanel.SetActive(true);
+        _loseElmasText.text = _levelSonuElmasSayisi.ToString();
+    }
+
+    public void NextLevelButton()
+    {
+        GameManager.instance._oyunAktif = false;
+        _winScreenPanel.SetActive(false);
+        _loseScreenPanel.SetActive(false);
+        _tapToStartPanel.SetActive(true);
+        _elmasSayisi = _elmasSayisi + _levelSonuElmasSayisi;
+        PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
+        _tapToStartElmasText.text = _elmasSayisi.ToString();
+        _levelController.LevelDegistir();
+        _playerController = GameObject.FindWithTag("Water").GetComponent<WaterController>();
+        _playerController.LevelStart();
+    }
+
+    public void LevelSonuElmasSayisi(int deger)
+    {
+        _levelSonuElmasSayisi = deger;
+    }
+
+    public void LevelRestartButton()
+    {
+        GameManager.instance._oyunAktif = false;
+        _winScreenPanel.SetActive(false);
+        _loseScreenPanel.SetActive(false);
+        _tapToStartPanel.SetActive(true);
+        _elmasSayisi = _elmasSayisi + _levelSonuElmasSayisi;
+        PlayerPrefs.SetInt("ElmasSayisi", _elmasSayisi);
+        _tapToStartElmasText.text = _elmasSayisi.ToString();
+        _levelController.LevelRestart();
+        _playerController = GameObject.FindWithTag("Water").GetComponent<WaterController>();
+        _playerController.LevelStart();
+    }
+
 }

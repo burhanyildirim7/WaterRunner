@@ -550,5 +550,10 @@ public class WaterController : MonoBehaviour
         _levelSlider.value = 0;
         _levelText.text = "%" + _temizlikSeviyesi.ToString() + " CLEAN";
         GetComponent<Renderer>().material = _waterMaterialList[4];
+        _waterEfektList[0].SetActive(false);
+        _waterEfektList[1].SetActive(false);
+        _waterEfektList[2].SetActive(false);
+        _waterEfektList[3].SetActive(false);
+        _waterEfektList[4].SetActive(true);
     }
 }

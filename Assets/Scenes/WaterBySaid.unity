@@ -685,6 +685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1244646729564752144, guid: b4024306588654e28b604120a73cff21, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97d73f40adab918488b63ef819464054, type: 2}
     - target: {fileID: 6985836496621981848, guid: b4024306588654e28b604120a73cff21, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1932,10 +1936,10 @@ MonoBehaviour:
   growAdd: 2
   _waterMaterialList:
   - {fileID: 2100000, guid: 97d73f40adab918488b63ef819464054, type: 2}
-  - {fileID: 2100000, guid: dd0d7aec8d94b6d4cadadd3d556253e8, type: 2}
-  - {fileID: 2100000, guid: d8c256f31128a47418c2c6d871172d72, type: 2}
-  - {fileID: 2100000, guid: acbe47f5f12dddb449912fc4d5b285ba, type: 2}
-  - {fileID: 2100000, guid: b1e9e0bd004a0ca4dbe5d884fa3331bf, type: 2}
+  - {fileID: 2100000, guid: 7f7de7c3230dfad428621c1a1c3b8e56, type: 2}
+  - {fileID: 2100000, guid: d0e6dcdd96ed5b245b15ba5b26d49195, type: 2}
+  - {fileID: 2100000, guid: af0f1a04f4ccb9d4aa4cf4e12976fdeb, type: 2}
+  - {fileID: 2100000, guid: 1253a38349a9e134e8aa9e127705c752, type: 2}
   _waterEfektList:
   - {fileID: 875656660}
   - {fileID: 875656660}

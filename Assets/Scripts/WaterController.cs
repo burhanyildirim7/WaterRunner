@@ -322,7 +322,7 @@ public class WaterController : MonoBehaviour
                 _waterEfektList[0].SetActive(false);
                 _waterEfektList[1].SetActive(false);
                 _waterEfektList[2].SetActive(false);
-                _waterEfektList[4].SetActive(false);
+                _waterEfektList[4].SetActive(true);
                 _waterEfektList[3].SetActive(true);
             }
             else if (_temizlikSeviyesi >= 40 && _temizlikSeviyesi < 60)
@@ -332,6 +332,7 @@ public class WaterController : MonoBehaviour
                 _waterEfektList[1].SetActive(false);
                 _waterEfektList[3].SetActive(false);
                 _waterEfektList[4].SetActive(false);
+                _waterEfektList[6].SetActive(true);
                 _waterEfektList[2].SetActive(true);
             }
             else if (_temizlikSeviyesi >= 60 && _temizlikSeviyesi < 80)
@@ -341,6 +342,7 @@ public class WaterController : MonoBehaviour
                 _waterEfektList[2].SetActive(false);
                 _waterEfektList[3].SetActive(false);
                 _waterEfektList[4].SetActive(false);
+                _waterEfektList[6].SetActive(true);
                 _waterEfektList[1].SetActive(true);
             }
             else if (_temizlikSeviyesi >= 80)
@@ -350,6 +352,7 @@ public class WaterController : MonoBehaviour
                 _waterEfektList[2].SetActive(false);
                 _waterEfektList[3].SetActive(false);
                 _waterEfektList[4].SetActive(false);
+                _waterEfektList[6].SetActive(true);
                 _waterEfektList[0].SetActive(true);
             }
             else
@@ -366,13 +369,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX1");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X2"))
@@ -382,13 +405,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX2");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X3"))
@@ -398,13 +441,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX3");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X4"))
@@ -414,13 +477,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX4");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X5"))
@@ -430,13 +513,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX5");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X6"))
@@ -446,13 +549,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX6");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X7"))
@@ -462,13 +585,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX7");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X8"))
@@ -478,13 +621,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX8");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X9"))
@@ -494,13 +657,33 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX9");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.CompareTag("X10"))
@@ -510,25 +693,61 @@ public class WaterController : MonoBehaviour
             float c = transform.localScale.z - (growAdd * 5);
             transform.localScale = new Vector3(a, b, c);
 
+            GameObject humanx = GameObject.FindGameObjectWithTag("HumanX10");
+
+            if (_temizlikSeviyesi <= 40)
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isDefeat", true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < humanx.transform.childCount; i++)
+                {
+                    humanx.gameObject.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("isVictory", true);
+
+                }
+            }
+
             if (transform.localScale.x < 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
 
-                GameManager.instance._oyunAktif = false;
-                UIController.instance.WinScreenPanelOpen();
+                //GameManager.instance._oyunAktif = false;
+                //UIController.instance.WinScreenPanelOpen();
+
+                StartCoroutine(LevelWin());
             }
         }
         else if (other.gameObject.tag == "FinishCizgisi")
         {
             _waterPaket.transform.localPosition = new Vector3(0, 0, 0);
             GameManager.instance._finishCizgisiAktif = true;
+            _waterEfektList[1].SetActive(false);
+            _waterEfektList[2].SetActive(false);
+            _waterEfektList[3].SetActive(false);
+            _waterEfektList[4].SetActive(false);
+            _waterEfektList[0].SetActive(false);
+            _waterEfektList[5].SetActive(true);
         }
         else if (other.gameObject.tag == "BitirmeCizgisi")
         {
             GameManager.instance._oyunAktif = false;
             transform.localScale = new Vector3(50, 50, 50);
             UIController.instance.WinScreenPanelOpen();
+
+            _waterEfektList[1].SetActive(false);
+            _waterEfektList[2].SetActive(false);
+            _waterEfektList[3].SetActive(false);
+            _waterEfektList[4].SetActive(false);
+            _waterEfektList[0].SetActive(false);
+            _waterEfektList[5].SetActive(false);
+            _waterEfektList[6].SetActive(false);
+            _waterEfektList[6].SetActive(false);
+
 
         }
         else
@@ -537,6 +756,22 @@ public class WaterController : MonoBehaviour
         }
 
 
+    }
+
+    private IEnumerator LevelWin()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        _waterEfektList[1].SetActive(false);
+        _waterEfektList[2].SetActive(false);
+        _waterEfektList[3].SetActive(false);
+        _waterEfektList[4].SetActive(false);
+        _waterEfektList[0].SetActive(false);
+        _waterEfektList[5].SetActive(false);
+        _waterEfektList[6].SetActive(false);
+
+        GameManager.instance._oyunAktif = false;
+        UIController.instance.WinScreenPanelOpen();
     }
 
     public void LevelStart()
@@ -554,6 +789,8 @@ public class WaterController : MonoBehaviour
         _waterEfektList[1].SetActive(false);
         _waterEfektList[2].SetActive(false);
         _waterEfektList[3].SetActive(false);
+        _waterEfektList[5].SetActive(false);
+        _waterEfektList[6].SetActive(false);
         _waterEfektList[4].SetActive(true);
     }
 }

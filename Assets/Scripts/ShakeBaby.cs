@@ -9,7 +9,7 @@ public class ShakeBaby : MonoBehaviour
     private float[] newValues;
     private float t = 0;
     [SerializeField] private float shakingSpeed = 0.2f;
-    [Range(0,200)]
+    [Range(0, 200)]
     [SerializeField] private float shakingRange = 200f;
 
     void Start()
@@ -19,7 +19,7 @@ public class ShakeBaby : MonoBehaviour
         newValues = new float[6];
         RandomFirstValues();
         RandomNewValues();
-       
+
     }
 
     void FixedUpdate()
@@ -27,13 +27,15 @@ public class ShakeBaby : MonoBehaviour
         Shake();
     }
 
-	public void Shake()
-	{
+    public void Shake()
+    {
+        t += shakingSpeed * Time.deltaTime;
+
         for (int i = 0; i < lastValues.Length; i++)
         {
             skrenderer.SetBlendShapeWeight(i, Mathf.Lerp(lastValues[i], newValues[i], t));
         }
-        t += shakingSpeed * Time.deltaTime;
+
         if (Mathf.Abs(skrenderer.GetBlendShapeWeight(1) - newValues[1]) == 0f)
         {
             t = 0;
@@ -47,16 +49,16 @@ public class ShakeBaby : MonoBehaviour
 
 
     public void RandomFirstValues()
-	{
-		for (int i = 0; i < lastValues.Length; i++)
-		{
-            lastValues[i] = Random.Range(-shakingRange,shakingRange);
-            skrenderer.SetBlendShapeWeight(i,lastValues[i]);
-		}
-	}
+    {
+        for (int i = 0; i < lastValues.Length; i++)
+        {
+            lastValues[i] = Random.Range(-shakingRange, shakingRange);
+            skrenderer.SetBlendShapeWeight(i, lastValues[i]);
+        }
+    }
 
     public void RandomNewValues()
-	{
+    {
         for (int i = 0; i < lastValues.Length; i++)
         {
             newValues[i] = Random.Range(-shakingRange, shakingRange);

@@ -27,6 +27,16 @@ TagManager:
   - X5
   - FinishCizgisi
   - WaterPaket
+  - HumanX1
+  - HumanX2
+  - HumanX3
+  - HumanX4
+  - HumanX5
+  - HumanX6
+  - HumanX7
+  - HumanX8
+  - HumanX9
+  - HumanX10
   layers:
   - Default
   - TransparentFX

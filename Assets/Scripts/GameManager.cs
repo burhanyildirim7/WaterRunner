@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public bool _oyunAktif = false;
 
+    public bool _oyunuBeklet = false;
+
     public bool _finishCizgisiAktif;
 
     private void Awake()

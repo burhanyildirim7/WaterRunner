@@ -38,7 +38,7 @@ public class SwerveMovement : MonoBehaviour
         }
 
 
-        if (GameManager.instance._oyunAktif)
+        if (GameManager.instance._oyunAktif && GameManager.instance._oyunuBeklet == false)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * playerZSpeed);
         }

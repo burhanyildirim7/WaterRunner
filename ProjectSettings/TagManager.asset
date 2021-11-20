@@ -37,6 +37,8 @@ TagManager:
   - HumanX8
   - HumanX9
   - HumanX10
+  - Missile
+  - UIController
   layers:
   - Default
   - TransparentFX

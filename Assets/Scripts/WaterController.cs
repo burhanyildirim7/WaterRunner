@@ -20,9 +20,17 @@ public class WaterController : MonoBehaviour
     [SerializeField] private int _kirliWaterToplanabilir;
 
 
-    [Header("Toplanabilir Obje Degerleri")]
+    [Header("Karakter Canvas Objeleri")]
     [SerializeField] private Text _levelText;
     [SerializeField] private Slider _levelSlider;
+    [SerializeField] private GameObject _sliderFill;
+    [SerializeField] private List<Color> _sliderFillColors = new List<Color>();
+
+
+    [Header("Animatorler")]
+    [SerializeField] private Animator _baslangicAnimator;
+    //[SerializeField] private List<Animator> _oyunSonuAnimators = new List<Animator>();
+
 
     //private int _sliderDeger;
 
@@ -37,6 +45,10 @@ public class WaterController : MonoBehaviour
     private GameObject _waterPaket;
 
 
+    private int _oyunSonuXDegeri;
+
+
+
 
     //private void Awake()
     //{
@@ -47,6 +59,34 @@ public class WaterController : MonoBehaviour
     private void Start()
     {
         LevelStart();
+    }
+
+    private void Update()
+    {
+        if (_levelSlider.value <= 4)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[0];
+        }
+        else if (_levelSlider.value > 4 && _levelSlider.value <= 8)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[1];
+        }
+        else if (_levelSlider.value > 8 && _levelSlider.value <= 12)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[2];
+        }
+        else if (_levelSlider.value > 12 && _levelSlider.value <= 16)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[3];
+        }
+        else if (_levelSlider.value > 16 && _levelSlider.value <= 20)
+        {
+            _sliderFill.GetComponent<Image>().color = _sliderFillColors[4];
+        }
+        else
+        {
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -150,6 +190,8 @@ public class WaterController : MonoBehaviour
                 _levelSlider.value = 0;
                 _levelText.text = "%" + _temizlikSeviyesi.ToString() + " CLEAN";
                 GameManager.instance._oyunAktif = false;
+
+                //OyunSonuElmasHesaplama();
                 UIController.instance.LoseScreenPanelOpen();
             }
 
@@ -304,6 +346,8 @@ public class WaterController : MonoBehaviour
                 _levelSlider.value = 0;
                 _levelText.text = "%" + _temizlikSeviyesi.ToString() + " CLEAN";
                 GameManager.instance._oyunAktif = false;
+
+                //OyunSonuElmasHesaplama();
                 UIController.instance.LoseScreenPanelOpen();
             }
 
@@ -364,10 +408,10 @@ public class WaterController : MonoBehaviour
         }
         else if (other.CompareTag("X1"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX1");
 
@@ -387,7 +431,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -397,13 +441,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(1));
+            }
+
+            _oyunSonuXDegeri = 1;
         }
         else if (other.CompareTag("X2"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX2");
 
@@ -423,7 +473,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -433,13 +483,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(2));
+            }
+
+            _oyunSonuXDegeri = 2;
         }
         else if (other.CompareTag("X3"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX3");
 
@@ -459,7 +515,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -469,13 +525,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(3));
+            }
+
+            _oyunSonuXDegeri = 3;
         }
         else if (other.CompareTag("X4"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX4");
 
@@ -495,7 +557,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -505,13 +567,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(4));
+            }
+
+            _oyunSonuXDegeri = 4;
         }
         else if (other.CompareTag("X5"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX5");
 
@@ -531,7 +599,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -541,13 +609,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(5));
+            }
+
+            _oyunSonuXDegeri = 5;
         }
         else if (other.CompareTag("X6"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX6");
 
@@ -567,7 +641,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -577,13 +651,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(6));
+            }
+
+            _oyunSonuXDegeri = 6;
         }
         else if (other.CompareTag("X7"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX7");
 
@@ -603,7 +683,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -613,13 +693,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(7));
+            }
+
+            _oyunSonuXDegeri = 7;
         }
         else if (other.CompareTag("X8"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX8");
 
@@ -639,7 +725,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -649,13 +735,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(8));
+            }
+
+            _oyunSonuXDegeri = 8;
         }
         else if (other.CompareTag("X9"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX9");
 
@@ -675,7 +767,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -685,13 +777,19 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(9));
+            }
+
+            _oyunSonuXDegeri = 9;
         }
         else if (other.CompareTag("X10"))
         {
-            float a = transform.localScale.x - (growAdd * 5);
-            float b = transform.localScale.y - (growAdd * 5);
-            float c = transform.localScale.z - (growAdd * 5);
-            transform.localScale = new Vector3(a, b, c);
+            //float a = transform.localScale.x - (growAdd * 5);
+            //float b = transform.localScale.y - (growAdd * 5);
+            //float c = transform.localScale.z - (growAdd * 5);
+            //transform.localScale = new Vector3(a, b, c);
 
             GameObject humanx = GameObject.FindGameObjectWithTag("HumanX10");
 
@@ -711,7 +809,7 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x < 50)
+            if (transform.localScale.x <= 50)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
                 Debug.Log("Oyun bitti can?m...");
@@ -721,6 +819,12 @@ public class WaterController : MonoBehaviour
 
                 StartCoroutine(LevelWin());
             }
+            else
+            {
+                StartCoroutine(OyunSonuAnimator(10));
+            }
+
+            _oyunSonuXDegeri = 10;
         }
         else if (other.gameObject.tag == "FinishCizgisi")
         {
@@ -732,6 +836,8 @@ public class WaterController : MonoBehaviour
             _waterEfektList[4].SetActive(false);
             _waterEfektList[0].SetActive(false);
             _waterEfektList[5].SetActive(true);
+
+
         }
         else if (other.gameObject.tag == "BitirmeCizgisi")
         {
@@ -758,6 +864,15 @@ public class WaterController : MonoBehaviour
 
     }
 
+    private void OyunSonuElmasHesaplama()
+    {
+        int _elmasDeger = 0;
+
+        _elmasDeger = (_oyunSonuXDegeri * _temizlikSeviyesi);
+
+        UIController.instance.LevelSonuElmasSayisi(_elmasDeger);
+    }
+
     private IEnumerator LevelWin()
     {
         yield return new WaitForSeconds(0.5f);
@@ -770,18 +885,45 @@ public class WaterController : MonoBehaviour
         _waterEfektList[5].SetActive(false);
         _waterEfektList[6].SetActive(false);
 
+        OyunSonuElmasHesaplama();
+
         GameManager.instance._oyunAktif = false;
         UIController.instance.WinScreenPanelOpen();
+    }
+
+    private IEnumerator OyunSonuAnimator(int deger)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        GameManager.instance._oyunuBeklet = true;
+
+        float a = transform.localScale.x - (growAdd * 5);
+        float b = transform.localScale.y - (growAdd * 5);
+        float c = transform.localScale.z - (growAdd * 5);
+        transform.localScale = new Vector3(a, b, c);
+
+        //_oyunSonuAnimators[deger].SetBool("isOpen", true);
+        StartCoroutine(OyunaDevamEt());
+    }
+
+    private IEnumerator OyunaDevamEt()
+    {
+        yield return new WaitForSeconds(1f);
+
+        GameManager.instance._oyunuBeklet = false;
+        //_oyunSonuAnimators[deger].SetBool("isOpen", true);
     }
 
     public void LevelStart()
     {
         GameManager.instance._finishCizgisiAktif = false;
+        GameManager.instance._oyunuBeklet = false;
         _player = GameObject.FindGameObjectWithTag("Player");
         _waterPaket = GameObject.FindGameObjectWithTag("WaterPaket");
         _player.transform.position = new Vector3(0, 2, 0);
         _waterPaket.transform.localPosition = new Vector3(0, 0, 0);
         _temizlikSeviyesi = 0;
+        _oyunSonuXDegeri = 0;
         _levelSlider.value = 0;
         _levelText.text = "%" + _temizlikSeviyesi.ToString() + " CLEAN";
         GetComponent<Renderer>().material = _waterMaterialList[4];
@@ -792,5 +934,7 @@ public class WaterController : MonoBehaviour
         _waterEfektList[5].SetActive(false);
         _waterEfektList[6].SetActive(false);
         _waterEfektList[4].SetActive(true);
+
+
     }
 }

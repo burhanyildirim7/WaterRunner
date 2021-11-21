@@ -84,6 +84,21 @@ public class UIController : MonoBehaviour
         GameManager.instance._oyunAktif = true;
         _tapToStartPanel.SetActive(false);
         _gameScreenPanel.SetActive(true);
+        StartCoroutine(OyunBaslangicAktif());
+    }
+
+    IEnumerator OyunBaslangicAktif()
+    {
+        yield return new WaitForSeconds(2f);
+
+        GameManager.instance._suDamladi = true;
+
+        yield return new WaitForSeconds(1f);
+
+        GameManager.instance._oyunBaslangic = true;
+        GameManager.instance._cameraDondu = true;
+        GameManager.instance._suDamladi = false;
+        _playerController.SuMeshOpen();
     }
 
     public void WinScreenPanelOpen()

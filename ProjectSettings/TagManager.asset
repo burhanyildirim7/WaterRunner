@@ -39,6 +39,7 @@ TagManager:
   - HumanX10
   - Missile
   - UIController
+  - Musluk
   layers:
   - Default
   - TransparentFX

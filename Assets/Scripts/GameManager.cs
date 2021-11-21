@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
 
     public bool _oyunuBeklet = false;
 
+    public bool _oyunBaslangic = false;
+
+    public bool _cameraDondu = false;
+
+    public bool _suDamladi = false;
+
     public bool _finishCizgisiAktif;
 
     private void Awake()

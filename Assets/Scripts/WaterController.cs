@@ -21,14 +21,15 @@ public class WaterController : MonoBehaviour
 
 
     [Header("Karakter Canvas Objeleri")]
+    [SerializeField] private GameObject _canvas;
     [SerializeField] private Text _levelText;
     [SerializeField] private Slider _levelSlider;
     [SerializeField] private GameObject _sliderFill;
     [SerializeField] private List<Color> _sliderFillColors = new List<Color>();
 
 
-    [Header("Animatorler")]
-    [SerializeField] private Animator _baslangicAnimator;
+    [Header("Oyun Basi Animasyon")]
+    [SerializeField] private GameObject _oyunBasiAnimasyonObject;
     //[SerializeField] private List<Animator> _oyunSonuAnimators = new List<Animator>();
 
 
@@ -47,6 +48,11 @@ public class WaterController : MonoBehaviour
 
     private int _oyunSonuXDegeri;
 
+    private CameraMovement _cameraMovemet;
+
+    private GameObject musluk;
+
+    private Animator _baslangicAnimator;
 
 
 
@@ -86,6 +92,17 @@ public class WaterController : MonoBehaviour
         else
         {
 
+        }
+
+        if (GameManager.instance._oyunAktif == true && GameManager.instance._oyunBaslangic == false)
+        {
+            _baslangicAnimator.enabled = true;
+
+            //return;
+        }
+        else
+        {
+            // _baslangicAnimator.enabled = false;
         }
     }
 
@@ -431,10 +448,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                //  Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -473,10 +490,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -515,10 +532,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -557,10 +574,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -599,10 +616,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -641,10 +658,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -683,10 +700,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                // Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -725,10 +742,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                //Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -767,10 +784,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                //Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -809,10 +826,10 @@ public class WaterController : MonoBehaviour
                 }
             }
 
-            if (transform.localScale.x <= 50)
+            if (transform.localScale.x < 51)
             {
                 // fazla k???ld??? i?in oyunu bitirme i?lemleri...
-                Debug.Log("Oyun bitti can?m...");
+                //Debug.Log("Oyun bitti can?m...");
 
                 //GameManager.instance._oyunAktif = false;
                 //UIController.instance.WinScreenPanelOpen();
@@ -843,6 +860,11 @@ public class WaterController : MonoBehaviour
         {
             GameManager.instance._oyunAktif = false;
             transform.localScale = new Vector3(50, 50, 50);
+
+            _oyunSonuXDegeri = 10;
+
+            OyunSonuElmasHesaplama();
+
             UIController.instance.WinScreenPanelOpen();
 
             _waterEfektList[1].SetActive(false);
@@ -877,6 +899,8 @@ public class WaterController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
+        GameManager.instance._oyunAktif = false;
+
         _waterEfektList[1].SetActive(false);
         _waterEfektList[2].SetActive(false);
         _waterEfektList[3].SetActive(false);
@@ -887,7 +911,7 @@ public class WaterController : MonoBehaviour
 
         OyunSonuElmasHesaplama();
 
-        GameManager.instance._oyunAktif = false;
+
         UIController.instance.WinScreenPanelOpen();
     }
 
@@ -918,6 +942,15 @@ public class WaterController : MonoBehaviour
     {
         GameManager.instance._finishCizgisiAktif = false;
         GameManager.instance._oyunuBeklet = false;
+        GameManager.instance._oyunBaslangic = false;
+        GameManager.instance._cameraDondu = false;
+        _cameraMovemet = Camera.main.gameObject.GetComponent<CameraMovement>();
+        _cameraMovemet.CameraResetle();
+        _canvas.SetActive(false);
+        gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        musluk = Instantiate(_oyunBasiAnimasyonObject, new Vector3(0, 0, 0), Quaternion.identity);
+        _baslangicAnimator = GameObject.FindGameObjectWithTag("Musluk").GetComponent<Animator>();
+        _baslangicAnimator.enabled = false;
         _player = GameObject.FindGameObjectWithTag("Player");
         _waterPaket = GameObject.FindGameObjectWithTag("WaterPaket");
         _player.transform.position = new Vector3(0, 2, 0);
@@ -933,8 +966,16 @@ public class WaterController : MonoBehaviour
         _waterEfektList[3].SetActive(false);
         _waterEfektList[5].SetActive(false);
         _waterEfektList[6].SetActive(false);
+        _waterEfektList[4].SetActive(false);
+
+
+    }
+
+    public void SuMeshOpen()
+    {
+        Destroy(musluk);
+        gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
         _waterEfektList[4].SetActive(true);
-
-
+        _canvas.SetActive(true);
     }
 }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1000013276728082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0004, y: 0.0004, z: 0.0004}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4248de3f6095664f97000e850cb9264, type: 2}
+  - {fileID: 2100000, guid: dbace5aad3ad87e47aaae617c3a8d14c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,9 +254,9 @@ MonoBehaviour:
   shadowCaster: {fileID: 0}
   currentCam: {fileID: 0}
   material: {fileID: 2100000, guid: f4248de3f6095664f97000e850cb9264, type: 2}
-  isMobileAdvanced: 0
+  isMobileAdvanced: 1
   isMobilePlatform: 1
-  shaderName: StylizedWater/Desktop
+  shaderName: StylizedWater/Mobile
   isWaterLayer: 1
   hasShaderParams: 1
   hasMaterial: 1

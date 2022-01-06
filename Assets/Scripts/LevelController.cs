@@ -28,6 +28,8 @@ public class LevelController : MonoBehaviour
         }
         // PlayerPrefs.SetInt("LevelNumarası", 0);
 
+        // PlayerPrefs.DeleteAll();
+
         _levelNumarasi = PlayerPrefs.GetInt("LevelNumarasi");
         _levelNumber = PlayerPrefs.GetInt("LevelNumber");
         _toplamLevelSayisi = _leveller.Count - 1;
